@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Insecure</title>
+	<style>
+	body { }
+	h1, fieldset { font-weight: 300; margin: 20px; padding: 20px; font-family: "Fira Sans"; }
+	.dropdown
+	{
+		width: 175px;
+		font-family: "SF UI Display";
+		box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+	}
+	.warning
+	{
+		color: #7f7f7f;
+		background-color: #eee;
+		font-size: 11px;
+		padding: 7px 7px 7px 28px;
+		line-height: 13px;
+		background-image: url(lock.gif);
+		letter-spacing: 0.5px;
+		background-repeat: no-repeat;
+		background-position: 7px center;
+		background-size: 14px;
+		font-weight: 400;
+	}
+     .warning b { font-weight: 500; }
+     
+     .warning:hover { color: #000; background-color: #e3e3e3; cursor: pointer;}
+     
+     .username {
+		color: #000;
+		background-color: #fff;
+		font-size: 12px;
+		font-weight: 400;
+		padding: 7px;
+		white-space: nowrap;
+     }
+
+     .username:hover { color: #fff; background-color: blue; cursor: pointer;  ;}
+
+	</style>
+</head>
+<body>
+<header>
+	<h1>
+		Insecure Login/Password Form Warning 
+	</h1>
+</header>
+<section>
+	<form>
+		<fieldset>
+			<legend>Login</legend> 
+			<input type="text" placeholder="Username" autofocus>
+			<div class="dropdown">
+				<div class="warning">
+<!-- 
+					This connection is not secure.
+ -->
+					Logins entered here could be compromised.
+					<b>Learn More.</b>
+				</div>
+				<div class="username">
+					Logins entered here could be compromised.
+				</div>
+				<div class="username">
+					Logins entered here could be compromised.
+				</div>
+				<div class="username">
+					Logins entered here could be compromised.
+				</div>
+				<div class="username">
+					Logins entered here could be compromised.
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</section>
+</body>
+</html>
+
+
