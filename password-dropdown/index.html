@@ -5,7 +5,7 @@
 	<title>Insecure Login/Password Form Warning</title>
 	<style>
 		body { }
-		
+
 		h1, fieldset
 		{
 			font-weight: 300;
@@ -13,16 +13,18 @@
 			padding: 20px;
 			font-family: "Fira Sans";
 		}
-		
+
 		.dropdown
 		{
-			width: 140px;
+			width: 240px;
 			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 			box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
 			border-radius: 0 0 3.5px 3.5px;
 			border: 1px solid #d0d0d0;
 		}
-		
+
+		input { width: 232px; }
+
 		.warning
 		{
 			color: #7f7f7f;
@@ -37,9 +39,9 @@
 			font-weight: 400;
 			border-bottom: 1px solid #d0d0d0;
 		}
-		
+
 		.warning b { font-weight: 500; }
-		
+
 		.warning:hover, .logins:hover
 		{
 			color: #000;
@@ -47,7 +49,7 @@
 			cursor: pointer;
 			border-color: #bebebe;
 		}
-		
+
 		.username
 		{
 			color: #000;
@@ -64,14 +66,14 @@
 			white-space: nowrap;
 			overflow: -moz-hidden-unscrollable;
 		}
-		
+
 		.username:hover
 		{
 			color: #fff;
 			background-color: #2b86e3;
 			cursor: pointer;
 		}
-		
+
 		.logins
 		{
 			background-color: #eee;
@@ -88,13 +90,13 @@
 <body>
 <header>
 	<h1>
-		Sign in to your account
+		We will have translations for the full and reduced warning strings.<br>Can we measure which version is best understood by users?
 	</h1>
 </header>
 <section>
 	<form>
 		<fieldset>
-			<legend>Login Form</legend> 
+			<legend>Login Form</legend>
 			<input type="text" placeholder="Username" autofocus>
 			<div class="dropdown">
 				<div class="warning">
@@ -116,9 +118,32 @@
 				</div>
 			</div>
 		</fieldset>
-<!-- 
+
 		<fieldset>
-			<legend>Password-protected Page</legend> 
+			<legend>Login Form</legend>
+			<input type="text" placeholder="Username" autofocus>
+			<div class="dropdown">
+				<div class="warning">
+					Logins entered here could be compromised.
+					<b>Learn More</b>
+				</div>
+				<div class="username">
+					user1@email.com
+				</div>
+				<div class="username">
+					email2@domain.com
+				</div>
+				<div class="username">
+					account3@website.com
+				</div>
+				<div class="logins">
+					View Saved Logins
+				</div>
+			</div>
+		</fieldset>
+<!--
+		<fieldset>
+			<legend>Password-protected Page</legend>
 			<input type="text" placeholder="Password">
 			<div class="dropdown">
 				<div class="warning">
@@ -145,5 +170,3 @@
 </section>
 </body>
 </html>
-
-
