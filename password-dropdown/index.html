@@ -170,14 +170,19 @@
 </section>
 </body>
 <script>
-	let input = document.getElementById("input1");
-	let dropdown = document.getElementById("dropdown1");
-	
-	input.addEventListener('focus', function() {
-		dropdown1.style.visibility = "visible";
-	})
-	input.addEventListener('blur', function() {
-		dropdown1.style.visibility = "hidden";
-	})
+
+	function setupDropdown(inputId, dropdownId) {
+		let input = document.getElementById(inputId);
+		let dropdown = document.getElementById(dropdownId);
+
+		input.addEventListener('focus', function() {
+			dropdown1.style.visibility = "visible";
+		})
+		input.addEventListener('blur', function() {
+			dropdown1.style.visibility = "hidden";
+		})	
+	}
+ 
+	setupDropdown("input1", "dropdown1");
 	</script
 </html>
