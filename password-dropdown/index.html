@@ -97,8 +97,8 @@
 	<form>
 		<fieldset>
 			<legend>Login Form</legend>
-			<input type="text" placeholder="Username" autofocus>
-			<div class="dropdown">
+			<input type="text" placeholder="Username" id="input1" autofocus>
+			<div class="dropdown" id="dropdown1" style="visibility: hidden">
 				<div class="warning">
 					This connection is not secure.
 					Logins entered here could be compromised.
@@ -121,8 +121,8 @@
 
 		<fieldset>
 			<legend>Login Form</legend>
-			<input type="text" placeholder="Username" autofocus>
-			<div class="dropdown">
+			<input type="text" placeholder="Username" id="input2" autofocus>
+			<div class="dropdown" id="dropdown2" style="visibility: hidden">
 				<div class="warning">
 					Logins entered here could be compromised.
 					<b>Learn More</b>
@@ -169,4 +169,20 @@
 	</form>
 </section>
 </body>
+<script>
+
+	function setupDropdown(inputId, dropdownId) {
+		let input = document.getElementById(inputId);
+		let dropdown = document.getElementById(dropdownId);
+
+		input.addEventListener('focus', function() {
+			dropdown1.style.visibility = "visible";
+		})
+		input.addEventListener('blur', function() {
+			dropdown1.style.visibility = "hidden";
+		})	
+	}
+ 
+	setupDropdown("input1", "dropdown1");
+	</script
 </html>
