@@ -14,17 +14,6 @@
 			<legend>Login</legend>
 			<input type="text" placeholder="Username" id="input1">
 			<div class="dropdown" id="dropdown1" style="visibility: hidden">
-				<a href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning">
-					This connection is not secure.
-					Logins entered here could be compromised.
-					<b>Learn More</b>
-				</a>
-<!--
-				<div class="warning">
-					This connection is not secure.
-					Logins entered here could be compromised.
-					<b>Learn More</b>
-				</div>
 				<div class="username">
 					user1@email.com
 				</div>
@@ -37,28 +26,79 @@
 				<div class="logins">
 					View Saved Logins
 				</div>
--->
 			</div>
+
 			<input type="password" placeholder="Password" id="input2">
+			<div class="dropdown" id="dropdown2" style="visibility: hidden">
+				<div class="username">
+					user1@email.com
+				</div>
+				<div class="username">
+					email2@domain.com
+				</div>
+				<div class="username">
+					account3@website.com
+				</div>
+				<div class="logins">
+					View Saved Logins
+				</div>
+			</div>
 		</fieldset>
 
 	</form>
 </section>
+
+	<a id="trial-a" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+		This connection is not secure.
+		Logins entered here could be compromised.
+		<b>Learn More</b>
+	</a>
+
+	<a id="trial-b" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+		Logins entered here could be compromised.
+		<b>Learn More</b>
+	</a>
+
 </body>
 <script>
+	let warning_a = document.getElementById('trial-a');
+	let warning_b = document.getElementById('trial-b');
+
+	var parseQueryString = function( queryString ) {
+    var params = {}, queries, temp, i, l;
+    // Split into key/value pairs
+    queries = queryString.split('&amp;');
+    // Convert the array of strings into an object
+    for ( i = 0, l = queries.length; i < l; i++ ) {
+        temp = queries[i].split('=');
+        params[temp[0]] = temp[1];
+    }
+    return params;
+	};
+
+  // ?v=trial-b or ?v=trial-a
+	let selected_warning = document.getElementById(parseQueryString(window.location.search.substring(1)).v);
 
 	function setupDropdown(inputId, dropdownId) {
 		let input = document.getElementById(inputId);
 		let dropdown = document.getElementById(dropdownId);
 
 		input.addEventListener('focus', function() {
-			dropdown1.style.visibility = "visible";
-		})
+			dropdown.style.visibility = 'visible';
+		});
+
 		input.addEventListener('blur', function() {
-			dropdown1.style.visibility = "hidden";
-		})	
+			dropdown.style.visibility = 'hidden';
+		});
+
+		let warning_copy = selected_warning.cloneNode(true);
+		warning_copy.style.display='inherit';
+
+		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
 	}
- 
+
 	setupDropdown("input1", "dropdown1");
+	setupDropdown("input2", "dropdown2");
+
 	</script>
 </html>
