@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Login Page</title>
+	<link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+<body>
+  <button id="go-back">Return to sign-in</button>
+  <script>
+    let version_params = new URLSearchParams(document.location.search);
+    // ?v=trial-b or ?v=trial-a
+  	let warning_id = version_params.get('v');
+
+    document.getElementById('go-back').onclick = function() {
+      window.location.href = `/index.html?v=${warning_id}`;
+    }
+  </script>
+</body>

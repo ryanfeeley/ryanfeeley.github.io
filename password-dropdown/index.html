@@ -9,40 +9,44 @@
 <header>
 </header>
 <section>
-	<form>
+	<form action="/submit-form.html" method="get">
 		<fieldset>
+			<input type="hidden" name="v" value="">
 			<legend>Login</legend>
 			<input type="text" placeholder="Username" id="input1">
-			<div class="dropdown" id="dropdown1" style="visibility: hidden">
-				<div class="username">
-					user1@email.com
-				</div>
-				<div class="username">
-					email2@domain.com
-				</div>
-				<div class="username">
-					account3@website.com
-				</div>
-				<div class="logins">
-					View Saved Logins
-				</div>
+				<div class="dropdown" id="dropdown1" style="visibility: hidden">
+					<div class="username">
+						user1@email.com
+					</div>
+					<div class="username">
+						email2@domain.com
+					</div>
+					<div class="username">
+						account3@website.com
+					</div>
+					<div class="logins">
+						View Saved Logins
+					</div>
+				</input>
 			</div>
 
 			<input type="password" placeholder="Password" id="input2">
-			<div class="dropdown" id="dropdown2" style="visibility: hidden">
-				<div class="username">
-					user1@email.com
+				<div class="dropdown" id="dropdown2" style="visibility: hidden">
+					<div class="username">
+						user1@email.com
+					</div>
+					<div class="username">
+						email2@domain.com
+					</div>
+					<div class="username">
+						account3@website.com
+					</div>
+					<div class="logins">
+						View Saved Logins
+					</div>
 				</div>
-				<div class="username">
-					email2@domain.com
-				</div>
-				<div class="username">
-					account3@website.com
-				</div>
-				<div class="logins">
-					View Saved Logins
-				</div>
-			</div>
+			</input>
+			<input type="submit" value="submit" name="submit"/>
 		</fieldset>
 
 	</form>
@@ -61,23 +65,13 @@
 
 </body>
 <script>
-	let warning_a = document.getElementById('trial-a');
-	let warning_b = document.getElementById('trial-b');
 
-	var parseQueryString = function( queryString ) {
-    var params = {}, queries, temp, i, l;
-    // Split into key/value pairs
-    queries = queryString.split('&amp;');
-    // Convert the array of strings into an object
-    for ( i = 0, l = queries.length; i < l; i++ ) {
-        temp = queries[i].split('=');
-        params[temp[0]] = temp[1];
-    }
-    return params;
-	};
-
+	let version_params = new URLSearchParams(document.location.search);
   // ?v=trial-b or ?v=trial-a
-	let selected_warning = document.getElementById(parseQueryString(window.location.search.substring(1)).v);
+	let warning_id = version_params.get('v');
+	if (!warning_id) warning_id = 'trial-a';
+
+	let selected_warning = document.getElementById(warning_id);
 
 	function setupDropdown(inputId, dropdownId) {
 		let input = document.getElementById(inputId);
@@ -92,13 +86,20 @@
 		});
 
 		let warning_copy = selected_warning.cloneNode(true);
-		warning_copy.style.display='inherit';
+		warning_copy.style.display = 'inherit';
+
+		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
+		warning_copy.addEventListener('mousedown', function(event) {
+			window.location.href = event.target.href;
+		});
 
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
 	}
 
 	setupDropdown("input1", "dropdown1");
 	setupDropdown("input2", "dropdown2");
+
+	document.forms[0].v.value = warning_id;
 
 	</script>
 </html>
