@@ -94,7 +94,7 @@
 
 		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
 		warning_copy.addEventListener('mousedown', function(event) {
-			window.location.href = event.target.href;
+			window.open(event.target.href, '_blank');			
 		});
 
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
