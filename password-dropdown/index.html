@@ -9,13 +9,13 @@
 <header>
 </header>
 <section>
-	<form action="/submit-form.html" method="get">
+	<form action="./submit-form.html" method="get">
 		<fieldset>
 			<input type="hidden" name="v" value="">
 			<legend>Login</legend>
 			<input type="text" placeholder="Username" id="input1">
 				<div class="dropdown" id="dropdown1" style="visibility: hidden">
-<!-- 
+<!--
 					<div class="username">
 						user1@email.com
 					</div>
@@ -34,7 +34,7 @@
 
 			<input type="password" placeholder="Password" id="input2">
 				<div class="dropdown" id="dropdown2" style="visibility: hidden">
-<!-- 
+<!--
 					<div class="username">
 						user1@email.com
 					</div>
@@ -94,7 +94,7 @@
 
 		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
 		warning_copy.addEventListener('mousedown', function(event) {
-			window.open(event.target.href, '_blank');			
+			window.open(event.target.href, '_blank');
 		});
 
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
