@@ -2,103 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Insecure Login/Password Form Warning</title>
-	<style>
-		body { }
-
-		h1, fieldset
-		{
-			font-weight: 300;
-			margin: 20px;
-			padding: 20px;
-			font-family: "Fira Sans";
-		}
-
-		.dropdown
-		{
-			width: 240px;
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-			box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
-			border-radius: 0 0 3.5px 3.5px;
-			border: 1px solid #d0d0d0;
-		}
-
-		input { width: 232px; }
-
-		.warning
-		{
-			color: #7f7f7f;
-			background-color: #eee;
-			font-size: 11px;
-			padding: 7px 7px 7px 28px;
-			line-height: 13px;
-			background-image: url(lock.gif);
-			background-repeat: no-repeat;
-			background-position: 7px 7px;
-			background-size: 14px;
-			font-weight: 400;
-			border-bottom: 1px solid #d0d0d0;
-		}
-
-		.warning b { font-weight: 500; }
-
-		.warning:hover, .logins:hover
-		{
-			color: #000;
-			background-color: #e3e3e3;
-			cursor: pointer;
-			border-color: #bebebe;
-		}
-
-		.username
-		{
-			color: #000;
-			background-color: #fff;
-			font-size: 12px;
-			font-weight: 400;
-			padding: 7px 7px 7px 28px;
-			white-space: nowrap;
-			background-image: url(icon_key.png);
-			background-repeat: no-repeat;
-			background-position: 7px center;
-			background-size: 14px;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: -moz-hidden-unscrollable;
-		}
-
-		.username:hover
-		{
-			color: #fff;
-			background-color: #2b86e3;
-			cursor: pointer;
-		}
-
-		.logins
-		{
-			background-color: #eee;
-			font-size: 11px;
-			text-align: center;
-			font-weight: 400;
-			padding: 8px;
-			border-radius: 0 0 3.5px 3.5px;
-			border-top: 1px solid #d0d0d0;
-		}
-
-	</style>
+	<title>Login Page</title>
+	<link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
 <header>
-	<h1>
-		We will have translations for the full and reduced warning strings.<br>Can we measure which version is best understood by users?
-	</h1>
 </header>
 <section>
 	<form>
 		<fieldset>
-			<legend>Login Form</legend>
-			<input type="text" placeholder="Username" id="input1" autofocus>
+			<legend>Login</legend>
+			<input type="text" placeholder="Username" id="input1">
 			<div class="dropdown" id="dropdown1" style="visibility: hidden">
+				<a href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning">
+					This connection is not secure.
+					Logins entered here could be compromised.
+					<b>Learn More</b>
+				</a>
+<!--
 				<div class="warning">
 					This connection is not secure.
 					Logins entered here could be compromised.
@@ -116,56 +37,11 @@
 				<div class="logins">
 					View Saved Logins
 				</div>
+-->
 			</div>
+			<input type="password" placeholder="Password" id="input2">
 		</fieldset>
 
-		<fieldset>
-			<legend>Login Form</legend>
-			<input type="text" placeholder="Username" id="input2" autofocus>
-			<div class="dropdown" id="dropdown2" style="visibility: hidden">
-				<div class="warning">
-					Logins entered here could be compromised.
-					<b>Learn More</b>
-				</div>
-				<div class="username">
-					user1@email.com
-				</div>
-				<div class="username">
-					email2@domain.com
-				</div>
-				<div class="username">
-					account3@website.com
-				</div>
-				<div class="logins">
-					View Saved Logins
-				</div>
-			</div>
-		</fieldset>
-<!--
-		<fieldset>
-			<legend>Password-protected Page</legend>
-			<input type="text" placeholder="Password">
-			<div class="dropdown">
-				<div class="warning">
-					This connection is not secure.
-					Logins entered here could be compromised.
-					<b>Learn More</b>
-				</div>
-				<div class="username">
-					user1@email.com
-				</div>
-				<div class="username">
-					email2@domain.com
-				</div>
-				<div class="username">
-					account3@website.com
-				</div>
-				<div class="logins">
-					View Saved Logins
-				</div>
-			</div>
-		</fieldset>
- -->
 	</form>
 </section>
 </body>
@@ -184,5 +60,5 @@
 	}
  
 	setupDropdown("input1", "dropdown1");
-	</script
+	</script>
 </html>
