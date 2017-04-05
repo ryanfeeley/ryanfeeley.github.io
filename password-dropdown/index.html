@@ -56,13 +56,13 @@
 	</form>
 </section>
 
-	<a id="trial-a" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+	<a id="trial-a" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
 		This connection is not secure.
 		Logins entered here could be compromised.
 		<b>Learn More</b>
 	</a>
 
-	<a id="trial-b" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+	<a id="trial-b" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
 		Logins entered here could be compromised.
 		<b>Learn More</b>
 	</a>
@@ -86,17 +86,19 @@
 		});
 
 		input.addEventListener('blur', function() {
-			dropdown.style.visibility = 'hidden';
+      setTimeout(function() {
+        dropdown.style.visibility = 'hidden';
+      }, 50);
 		});
 
 		let warning_copy = selected_warning.cloneNode(true);
 		warning_copy.style.display = 'inherit';
 
 		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
-		warning_copy.addEventListener('mousedown', function(event) {
+		/* warning_copy.addEventListener('mousedown', function(event) {
 			window.open(event.target.href, '_blank');
 		});
-
+ */
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
 	}
 
