@@ -15,7 +15,7 @@
 			<legend>Login</legend>
 			<input type="text" placeholder="Username" id="input1">
 				<div class="dropdown" id="dropdown1" style="visibility: hidden">
-<!--
+<!-- 
 					<div class="username">
 						user1@email.com
 					</div>
@@ -77,6 +77,8 @@
 
 	let selected_warning = document.getElementById(warning_id);
 
+	let quiet = false;
+	
 	function setupDropdown(inputId, dropdownId) {
 		let input = document.getElementById(inputId);
 		let dropdown = document.getElementById(dropdownId);
@@ -86,19 +88,29 @@
 		});
 
 		input.addEventListener('blur', function() {
-      setTimeout(function() {
-        dropdown.style.visibility = 'hidden';
-      }, 50);
+			if (quiet) {
+				quiet = false;
+				return;
+			}
+			setTimeout(function() {
+				dropdown.style.visibility = 'hidden';
+			}, 50);
 		});
 
 		let warning_copy = selected_warning.cloneNode(true);
 		warning_copy.style.display = 'inherit';
 
 		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
-		/* warning_copy.addEventListener('mousedown', function(event) {
-			window.open(event.target.href, '_blank');
+		warning_copy.addEventListener('mousedown', function(event) {
+			//window.open(event.target.href, '_blank');
+			quiet = true;
+			
+			// do a longer wait to hide to ensure the href click was processed
+			setTimeout(function() {
+				dropdown.style.visibility = 'hidden';
+			}, 200);
 		});
- */
+ 
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
 	}
 
