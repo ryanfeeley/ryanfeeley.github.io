@@ -1,13 +1,26 @@
-body { margin: 20%; }
+body { margin: 0; background-color: #333; font-family: "Ubuntu", "Fira Sans", sans-serif; }
+
+section
+{
+	background-image: url(background.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	width: 1113.5px;
+	height: 806px;
+	background-size: 100%;
+	margin: 10px auto;
+	position: relative;
+}
 
 h1, fieldset
 {
 	font-weight: 300;
 	margin: 20px;
 	padding: 20px;
-	font-family: "Fira Sans", sans-serif;
+	font-family: "Ubuntu", "Fira Sans", sans-serif;
 	width: 232px;
 	margin: 0 auto;
+	color: #fff;
 }
 
 .dropdown
@@ -19,6 +32,8 @@ h1, fieldset
 	border: 1px solid #d0d0d0;
 	position: absolute;
 }
+
+fieldset { position: absolute; top: 360px; left: 580px; }
 
 input { width: 232px; margin-top: 2em; }
 

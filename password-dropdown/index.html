@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Login Page</title>
+	<title>Welcome to AllMusic. Sign Up or Learn More</title>
 	<link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
@@ -12,8 +12,8 @@
 	<form action="./submit-form.html" method="get">
 		<fieldset>
 			<input type="hidden" name="v" value="">
-			<legend>Login</legend>
-			<input type="text" placeholder="Username" id="input1">
+			<legend>Sign up using your email</legend>
+			<input type="text" placeholder="Email Address" id="input1">
 				<div class="dropdown" id="dropdown1" style="visibility: hidden">
 <!-- 
 					<div class="username">
@@ -32,29 +32,20 @@
 				</input>
 			</div>
 
-			<input type="password" placeholder="Password" id="input2">
+			<input type="password" placeholder="Choose password" id="input2">
 				<div class="dropdown" id="dropdown2" style="visibility: hidden">
-<!--
-					<div class="username">
-						user1@email.com
-					</div>
-					<div class="username">
-						email2@domain.com
-					</div>
-					<div class="username">
-						account3@website.com
-					</div>
-					<div class="logins">
-						View Saved Logins
-					</div>
- -->
 				</div>
 			</input>
-			<input type="submit" value="Submit" name="submit"/>
+			<input type="submit" value="Sign Up" name="submit"/>
 		</fieldset>
 
 	</form>
 </section>
+
+	<form action="http://example.com" method="post" style="display:none;">
+		<input type="password" placeholder="daves not here" />
+	</form>
+
 
 	<a id="trial-a" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
 		This connection is not secure.
