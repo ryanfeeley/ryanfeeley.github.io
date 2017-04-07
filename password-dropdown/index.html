@@ -10,9 +10,9 @@
 </header>
 <section>
 	<form action="./submit-form.html" method="get">
-		<fieldset>
+		<fieldset style="border:none">
 			<input type="hidden" name="v" value="">
-			<legend>Sign up using your email</legend>
+			<label>Email address</label>
 			<input type="text" placeholder="Email Address" id="input1">
 				<div class="dropdown" id="dropdown1" style="visibility: hidden">
 <!-- 
@@ -32,11 +32,12 @@
 				</input>
 			</div>
 
-			<input type="password" placeholder="Choose password" id="input2">
+			<label>Password</label>
+			<input type="password" placeholder="Password" id="input2">
 				<div class="dropdown" id="dropdown2" style="visibility: hidden">
 				</div>
 			</input>
-			<input type="submit" value="Sign Up" name="submit"/>
+			<input type="submit" value="Log In" name="submit"/>
 		</fieldset>
 
 	</form>
@@ -51,7 +52,7 @@
 	<a id="trial-a" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
 		Insecure connection:
 		Passwords may not be safe.
-		<b>Learn More</b>
+		<b>Learn more</b>
 	</a>
 
 	<a id="trial-b" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">

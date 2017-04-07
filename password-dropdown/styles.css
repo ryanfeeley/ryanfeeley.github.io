@@ -33,9 +33,9 @@ h1, fieldset
 	position: absolute;
 }
 
-fieldset { position: absolute; top: 360px; left: 580px; }
-
-input { width: 232px; margin-top: 2em; }
+fieldset { position: absolute; top: 480px; left: 210px; }
+label { color: #fff; display: block; margin-top: 1em; }
+input { width: 232px; margin-top: 1em; }
 
 .warning
 {
