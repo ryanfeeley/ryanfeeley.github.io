@@ -9,13 +9,22 @@
 <header>
 </header>
 <section>
+	<div id="lock">
+		<div id="popup" class="hidden">
+			<image id="triangle" src="./triangle.png"/>
+			<div id="popup-warning">
+				<div id="dropshadow"></div>
+				<div id="click-shift"></div>
+			</div>
+		</div>
+	</div>
 	<form action="./submit-form.html" method="get">
 		<fieldset style="border:none">
 			<input type="hidden" name="v" value="">
 			<label>Email address</label>
 			<input type="text" placeholder="Email Address" id="input1">
 				<div class="dropdown" id="dropdown1" style="visibility: hidden">
-<!-- 
+<!--
 					<div class="username">
 						user1@email.com
 					</div>
@@ -63,16 +72,29 @@
 
 </body>
 <script>
+	let lock = document.getElementById('lock');
+	let click_shift = document.getElementById('click-shift');
+	let popup_warning = document.getElementById('popup-warning');
 
 	let version_params = new URLSearchParams(document.location.search);
   // ?v=trial-b or ?v=trial-a
 	let warning_id = version_params.get('v');
 	if (!warning_id) warning_id = 'trial-a';
-
 	let selected_warning = document.getElementById(warning_id);
-
 	let quiet = false;
-	
+
+	lock.onclick = () => {
+		lock.firstElementChild.classList.remove('hidden');
+	}
+
+	click_shift.onclick = () => {
+		if (popup_warning.classList.contains('shift-left')){
+			popup_warning.classList.remove('shift-left');
+		} else {
+			popup_warning.classList.add('shift-left');
+		}
+	}
+
 	function setupDropdown(inputId, dropdownId) {
 		let input = document.getElementById(inputId);
 		let dropdown = document.getElementById(dropdownId);
@@ -98,13 +120,13 @@
 		warning_copy.addEventListener('mousedown', function(event) {
 			//window.open(event.target.href, '_blank');
 			quiet = true;
-			
+
 			// do a longer wait to hide to ensure the href click was processed
 			setTimeout(function() {
 				dropdown.style.visibility = 'hidden';
 			}, 200);
 		});
- 
+
 		dropdown.insertBefore(warning_copy, dropdown.childNodes[0]);
 	}
 
