@@ -1,3 +1,8 @@
+:root
+{
+	--animation-curve: cubic-bezier(0.07, 0.95, 0, 1);
+}
+
 body { margin: 0; background-color: #333; font-family: "Ubuntu", "Fira Sans", sans-serif; }
 
 section
@@ -59,7 +64,8 @@ input { width: 232px; margin-top: 1em; }
 
 .warning b { font-weight: 500; }
 
-.warning:hover, .logins:hover
+.warning:hover,
+.logins:hover
 {
 	color: #000;
 	background-color: #e3e3e3;
@@ -102,7 +108,8 @@ input { width: 232px; margin-top: 1em; }
 	border-top: 1px solid #d0d0d0;
 }
 
-#lock {
+#lock
+{
 	position: absolute;
 	width: 42px;
 	height: 23px;
@@ -110,11 +117,13 @@ input { width: 232px; margin-top: 1em; }
 	left: 45px;
 }
 
-.hidden {
+.hidden
+{
 	display: none;
 }
 
-#popup {
+#popup
+{
 	position: absolute;
 	width: 330px;
 	height: 294px;
@@ -122,7 +131,8 @@ input { width: 232px; margin-top: 1em; }
 	left: -12px;
 }
 
-#popup-warning {
+#popup-warning
+{
 	width: 330px;
 	height: 284px;
 	position: absolute;
@@ -133,16 +143,18 @@ input { width: 232px; margin-top: 1em; }
 	border-radius: 3.5px;
 	box-shadow: 0 0 0 1px hsla(210,4%,10%,.2);
 	top: 10px;
-	transition: background-position .2s ease-in;
+	transition: background-position .3s var(--animation-curve);
 }
 
-#triangle {
+#triangle
+{
 	height: 10px;
 	position: absolute;
 	z-index: 20;
 }
 
-#dropshadow {
+#dropshadow
+{
 	width: 37px;
 	height: 284px;
 	right: 0;
@@ -151,25 +163,30 @@ input { width: 232px; margin-top: 1em; }
 	background-size: 37px 284px;
 	opacity: 0;
 	background-image: url('./dropshadow.png');
-	transition: right .2s ease-in, opacity .2s ease-in;
+	transition: right .3s var(--animation-curve), opacity .3s var(--animation-curve);
 }
 
-#click-shift {
+#click-shift
+{
 	position: absolute;
 	right: 0;
-	height: 91px;
-	width: 37px;
+	height: 94px;
+	width: 39px;
 }
 
-#click-shift:hover {
+#click-shift:hover
+{
 	background-color: rgba(24, 25, 26, 0.07);
 }
 
-#popup-warning.shift-left {
+#popup-warning.shift-left
+{
 	background-position-x: -291px;
 }
 
-#popup-warning.shift-left #dropshadow, #popup-warning.shift-left #click-shift {
+#popup-warning.shift-left #dropshadow,
+#popup-warning.shift-left #click-shift
+{
 	right: 293px;
 	opacity: 1;
 }

@@ -83,11 +83,27 @@
 	let selected_warning = document.getElementById(warning_id);
 	let quiet = false;
 
-	lock.onclick = () => {
-		lock.firstElementChild.classList.remove('hidden');
+	document.querySelector('body').onclick = (e) => {
+		if (!lock.firstElementChild.classList.contains('hidden')) {
+			lock.firstElementChild.classList.add('hidden');
+		}
 	}
 
-	click_shift.onclick = () => {
+	lock.onclick = (e) => {
+		e.stopPropagation();
+		if (lock.firstElementChild.classList.contains('hidden')){
+			lock.firstElementChild.classList.remove('hidden');
+		} else {
+			lock.firstElementChild.classList.add('hidden');
+		}
+	}
+
+	popup_warning.onclick = (e) => {
+		e.stopPropagation();
+	}
+
+	click_shift.onclick = (e) => {
+		e.stopPropagation();
 		if (popup_warning.classList.contains('shift-left')){
 			popup_warning.classList.remove('shift-left');
 		} else {
