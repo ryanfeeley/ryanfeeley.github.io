@@ -58,33 +58,40 @@
 	</form>
 
 
-	<a id="trial-a" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+	<a target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning trial-a" style="display: none">
 		Firefox has detected an insecure site.
 		Your password may not be safe.
 		<b>Learn more</b>
 	</a>
 
-	<a id="trial-b" target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning" style="display: none">
+	<a target="_blank" href="https://support.mozilla.org/t5/Protect-your-privacy/Insecure-password-warning-in-Firefox/ta-p/27861" class="warning trial-b" style="display: none">
 		Firefox has detected an insecure form.
 		Details can be intercepted.
 		<b>Learn more</b>
 	</a>
+
+	<div class="warning trial-c" style="display: none">
+		Insecure form detected by Firefox.
+		<div class='info-icon'> </div>
+	</div>
 
 </body>
 <script>
 	let lock = document.getElementById('lock');
 	let click_shift = document.getElementById('click-shift');
 	let popup_warning = document.getElementById('popup-warning');
+	let dropshadow = document.getElementById('dropshadow');
 
 	let version_params = new URLSearchParams(document.location.search);
   // ?v=trial-b or ?v=trial-a
 	let warning_id = version_params.get('v');
 	if (!warning_id) warning_id = 'trial-a';
-	let selected_warning = document.getElementById(warning_id);
+	let selected_warning = document.querySelector('.' + warning_id);
 	let quiet = false;
 
 	document.querySelector('body').onclick = (e) => {
 		if (!lock.firstElementChild.classList.contains('hidden')) {
+			popup_warning.classList.remove('shift-left');
 			lock.firstElementChild.classList.add('hidden');
 		}
 	}
@@ -94,6 +101,7 @@
 		if (lock.firstElementChild.classList.contains('hidden')){
 			lock.firstElementChild.classList.remove('hidden');
 		} else {
+			popup_warning.classList.remove('shift-left');
 			lock.firstElementChild.classList.add('hidden');
 		}
 	}
@@ -108,6 +116,12 @@
 			popup_warning.classList.remove('shift-left');
 		} else {
 			popup_warning.classList.add('shift-left');
+		}
+	}
+
+	dropshadow.onclick = () => {
+		if (popup_warning.classList.contains('shift-left')){
+			popup_warning.classList.remove('shift-left');
 		}
 	}
 
@@ -132,11 +146,19 @@
 		let warning_copy = selected_warning.cloneNode(true);
 		warning_copy.style.display = 'inherit';
 
-		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
-		warning_copy.addEventListener('mousedown', function(event) {
-			//window.open(event.target.href, '_blank');
-			quiet = true;
+		warning_copy.onclick = (e) => {
+			e.stopPropagation();
+			if (warning_copy.classList.contains('trial-c')) {
+				lock.firstElementChild.classList.remove('hidden');
+				setTimeout(function() {
+					popup_warning.classList.add('shift-left');
+				}, 100);
+			}
+		}
 
+		// this event must fire before the 'blur' event, which is why the <a> hrefs are not working
+		warning_copy.addEventListener('mousedown', function() {
+			quiet = true;
 			// do a longer wait to hide to ensure the href click was processed
 			setTimeout(function() {
 				dropdown.style.visibility = 'hidden';
